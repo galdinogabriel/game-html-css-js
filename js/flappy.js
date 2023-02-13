@@ -134,10 +134,12 @@ function Passaro(alturaJogo) {
   }
 
   window.ontouchend = (e) =>{
+    e.preventDefault();
     this.elemento.src = "imgs/passaro_2.png"
     voando = false
   }
   window.onkeyup = (e) => {
+    e.preventDefault();
     this.elemento.src = "imgs/passaro_2.png"
     voando = false
   
