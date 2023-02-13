@@ -196,14 +196,13 @@ function FlappyBird() {
         total.style["z-index"] = 1
 
         document.querySelector('#pontuacao').innerHTML=`pontuação total: ${progresso.elemento.textContent}`
-        
+        document.querySelector("#reload").ontouchstart = (e)=>{
+          window.location.reload();
+        }
       }
     }, 20);
   };
 }
 
-document.querySelector("#resultado>a").ontouchstart() = (e)=>{
-  e.preventDefault();
-  window.location.reload();
-}
+
 new FlappyBird().start();

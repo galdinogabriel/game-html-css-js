@@ -6,7 +6,9 @@
 * {
     box-sizing: border-box;
 }
-
+p{
+    font-family: monospace;
+}
 body {
     margin: 0;
     background-color: #e68e9a;
