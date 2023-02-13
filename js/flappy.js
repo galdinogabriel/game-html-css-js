@@ -58,7 +58,7 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
     new parDeBarreiras(altura, abertura, largura + espaco * 3),
   ];
 
-  const deslocamento = 3;
+  const deslocamento = 3.5;
   this.animar = () => {
     this.pares.forEach((par) => {
       par.setX(par.getX() - deslocamento);
@@ -121,15 +121,32 @@ function Passaro(alturaJogo) {
   this.setY = (y) => (this.elemento.style.bottom = `${y}px`);
 
   window.onkeydown = (e) => {
-   
+    this.elemento.src = "imgs/passaro.png"
       new Audio("audio/baterAsas.mp3").play()
       voando = true;
     
   };
-  window.onkeyup = (e) => (voando = false);
+
+  window.ontouchstart = (e) =>{
+    this.elemento.src = "imgs/passaro.png"
+      new Audio("audio/baterAsas.mp3").play()
+      voando = true;
+  }
+
+  window.ontouchend = (e) =>{
+    this.elemento.src = "imgs/passaro_2.png"
+    voando = false
+  }
+  window.onkeyup = (e) => {
+    this.elemento.src = "imgs/passaro_2.png"
+    voando = false
+  
+  };
 
   this.animar = () => {
-    const novoY = this.getY() + (voando ? 8 : -5);
+    
+    const novoY = this.getY() + (
+      voando ? 8 : -5);
     const alturaMaxima = alturaJogo - this.elemento.clientHeight;
 
     if (novoY <= 0) {
@@ -171,9 +188,11 @@ function FlappyBird() {
 
         clearInterval(temporizador);
 
-        let total = document.querySelector('#total')
+        let total = document.querySelector('#resultado')
         total.style["z-index"] = 1
-        total.innerHTML = `<h2>Pontuação total: ${progresso.elemento.textContent} </h2>`
+
+        document.querySelector('#pontuacao').innerHTML=`pontuação total: ${progresso.elemento.textContent}`
+        
       }
     }, 20);
   };
