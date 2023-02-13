@@ -195,7 +195,7 @@ function FlappyBird() {
         let total = document.querySelector('#resultado')
         total.style["z-index"] = 1
 
-        document.querySelector('#pontuacao').innerHTML=`pontuação total: ${progresso.elemento.textContent}`
+        document.querySelector('#pontuacao').innerHTML=`Pontos: ${progresso.elemento.textContent}`
         document.querySelector("#reload").ontouchstart = (e)=>{
           window.location.reload();
         }
