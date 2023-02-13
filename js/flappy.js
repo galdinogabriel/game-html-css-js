@@ -185,10 +185,12 @@ function FlappyBird() {
       passaro.animar();
 
       if (colidiu(passaro, barreiras)) {
+
+        clearInterval(temporizador);
         let playSound = () => new Audio("audio/bateu.mp3").play();
         playSound();
 
-        clearInterval(temporizador);
+        
 
         let total = document.querySelector('#resultado')
         total.style["z-index"] = 1
@@ -200,4 +202,8 @@ function FlappyBird() {
   };
 }
 
+document.querySelector("#resultado>a").ontouchstart() = (e)=>{
+  e.preventDefault();
+  window.location.reload();
+}
 new FlappyBird().start();
